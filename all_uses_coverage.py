@@ -298,6 +298,7 @@ def main(argv: Iterable[str] | None = None) -> int:
 
     if args.output_json:
         payload = asdict(metrics)
+        args.output_json.parent.mkdir(parents=True, exist_ok=True)
         args.output_json.write_text(json.dumps(payload, indent=2), encoding="utf-8")
         print(f"\nWrote {args.output_json}")
 
