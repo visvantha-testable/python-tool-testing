@@ -1,0 +1,5 @@
+beniget>=0.4.2
+coverage>=7.6.0
+gast>=0.7.0
+pytest>=8.0.0
+pytest-cov>=5.0.0
