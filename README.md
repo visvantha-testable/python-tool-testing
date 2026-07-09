@@ -28,6 +28,28 @@ White Box **All Uses Coverage** metric validation using **coverage.py + beniget*
 | Variable Use Detection | All-Uses Coverage % | coverage.py + beniget |
 
 See `config/target_repo.json` for machine-readable mapping and formulas.
+See `config/execution_trigger.json` for the exact commands and expected output to trigger both tools.
+
+## Execution (trigger data)
+
+| Input | Value |
+|-------|-------|
+| **Subject repo** | `https://github.com/serge-sans-paille/beniget` |
+| **Static analysis root** | `work/beniget/beniget` |
+| **coverage.py JSON** | `work/beniget/coverage.json` (after `coverage run --branch -m pytest tests/`) |
+| **One-shot script** | `.\run_beniget_analysis.ps1` |
+
+Expected metrics after running against beniget (692 tests pass):
+
+| Metric | Expected value |
+|--------|----------------|
+| C-Use | 655 |
+| P-Use (covered branches) | 444 |
+| Def-Use pairs | 2005 |
+| All-Uses Coverage | 97.09% |
+| All-Uses Coverage % | 79.46% |
+| Cross-function uses | 4 |
+| Coverage valid | true |
 
 ## Quick Start
 

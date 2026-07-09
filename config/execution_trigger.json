@@ -1,0 +1,89 @@
+{
+  "metric": "All Uses Coverage",
+  "strategy": "White Box → Data Flow Testing",
+  "tools": ["coverage.py", "beniget"],
+  "target_repository": {
+    "name": "beniget",
+    "url": "https://github.com/serge-sans-paille/beniget",
+    "source_path": "work/beniget/beniget",
+    "why": "Canonical Python def-use chain analyzer; pytest suite drives coverage.py execution witness"
+  },
+  "trigger_sequence": [
+    {
+      "step": 1,
+      "tool": "pip",
+      "command": "python -m pip install -r requirements.txt",
+      "purpose": "Install coverage.py, beniget, gast, pytest"
+    },
+    {
+      "step": 2,
+      "tool": "git",
+      "command": "git clone --depth 1 https://github.com/serge-sans-paille/beniget.git work/beniget",
+      "purpose": "Clone subject repository with C-Use, P-Use, cross-function, and multi-def patterns"
+    },
+    {
+      "step": 3,
+      "tool": "pip",
+      "command": "python -m pip install -e work/beniget",
+      "purpose": "Install beniget for static def-use analysis"
+    },
+    {
+      "step": 4,
+      "tool": "coverage.py",
+      "command": "cd work/beniget && python -m coverage run --branch -m pytest tests/ -q",
+      "purpose": "Execution witness: covered lines, branches, missing lines"
+    },
+    {
+      "step": 5,
+      "tool": "coverage.py",
+      "command": "cd work/beniget && python -m coverage json -o coverage.json",
+      "purpose": "Emit coverage JSON for metric formulas"
+    },
+    {
+      "step": 6,
+      "tool": "beniget + coverage.py",
+      "command": "python all_uses_coverage.py --source work/beniget/beniget --coverage-json work/beniget/coverage.json --repo-url https://github.com/serge-sans-paille/beniget --output-json reports/beniget_all_uses.json",
+      "purpose": "Compute all 10 All Uses Coverage sub-metrics"
+    }
+  ],
+  "one_shot_script": ".\\run_beniget_analysis.ps1",
+  "expected_output_fields": [
+    "c_use",
+    "p_use",
+    "def_use_pairs",
+    "all_uses_coverage",
+    "partial_uses",
+    "multiple_definitions",
+    "cross_function_uses",
+    "unreachable_uses",
+    "coverage_valid",
+    "all_uses_coverage_percent"
+  ],
+  "expected_sample_output": {
+    "c_use": 655,
+    "p_use": 444,
+    "def_use_pairs": 2005,
+    "all_uses_coverage": 0.9709,
+    "partial_uses": 264,
+    "multiple_definitions": 385,
+    "cross_function_uses": 4,
+    "unreachable_uses": 80,
+    "coverage_valid": true,
+    "all_uses_coverage_percent": 79.46,
+    "num_statements": 2749,
+    "covered_lines": 2669,
+    "missing_lines": 80,
+    "num_branches": 510,
+    "covered_branches": 444,
+    "files_analyzed": 5,
+    "definitions_total": 896
+  },
+  "thresholds_from_mapping": {
+    "c_use_coverage_percent": ">= 65%",
+    "p_use_coverage_percent": ">= 65%",
+    "du_pair_map_coverage_percent": ">= 90%",
+    "all_uses_coverage_percent": ">= 65%",
+    "ghost_use_percent": "< 2%",
+    "report_completeness_percent": ">= 90%"
+  }
+}
