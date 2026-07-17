@@ -1,28 +1,27 @@
-# Clone beniget, run coverage.py tests, emit All Uses Coverage metrics.
+# Run All Uses Coverage pipeline on sample_subject (from testable-whitebox-python).
 param(
-    [string]$WorkDir = "$PSScriptRoot\work",
-    [string]$BenigetUrl = "https://github.com/serge-sans-paille/beniget.git"
+    [string]$SampleDir = "$PSScriptRoot\sample_subject",
+    [string]$SourceDir = "$PSScriptRoot\sample_subject\src"
 )
 
 $ErrorActionPreference = "Stop"
-$BenigetDir = Join-Path $WorkDir "beniget"
-
-New-Item -ItemType Directory -Force -Path $WorkDir | Out-Null
-
-if (-not (Test-Path $BenigetDir)) {
-    git clone --depth 1 $BenigetUrl $BenigetDir
-}
 
 python -m pip install -r "$PSScriptRoot\requirements.txt" -q
-python -m pip install -e $BenigetDir -q
 
-Push-Location $BenigetDir
-python -m coverage run --branch -m pytest tests/ -q
-python -m coverage json -o coverage.json
+Push-Location $SampleDir
+python -m coverage run --branch -m pytest -q
 Pop-Location
 
+Push-Location $SampleDir
+python -m coverage json -o "$PSScriptRoot\reports\coverage.json" --rcfile ".coveragerc"
+Pop-Location
+
+python "$PSScriptRoot\scripts\run_beniget.py"
+
 python "$PSScriptRoot\all_uses_coverage.py" `
-    --source "$BenigetDir\beniget" `
-    --coverage-json "$BenigetDir\coverage.json" `
-    --repo-url "https://github.com/serge-sans-paille/beniget" `
-    --output-json "$PSScriptRoot\reports\beniget_all_uses.json"
+    --source "$SourceDir" `
+    --coverage-json "$PSScriptRoot\reports\coverage.json" `
+    --repo-url "https://github.com/bipinvk47/testable-whitebox-python" `
+    --output-json "$PSScriptRoot\reports\all_uses_metrics.json"
+
+python "$PSScriptRoot\all_uses_coverage_trigger.py"

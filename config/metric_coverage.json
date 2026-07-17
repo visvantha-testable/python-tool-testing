@@ -1,0 +1,84 @@
+{
+  "tool": "coverage.py + beniget",
+  "strategy": "White Box → Data Flow Testing",
+  "category": "All Uses Coverage",
+  "metrics_total": 10,
+  "source_repository": {
+    "name": "testable-whitebox-python",
+    "url": "https://github.com/bipinvk47/testable-whitebox-python",
+    "subject_path": "sample_subject/src",
+    "rationale": "data_processor.py exercises C-Use, P-Use, def-use pairs, cross-function, multiple definitions, ghost uses; tests drive coverage.py execution witness"
+  },
+  "metrics": [
+    {
+      "id": 89,
+      "l4_classification": "Computational Use Detection (C-Use)",
+      "l5_metric": "Data Processing Validation",
+      "field": "c_use",
+      "expected_score": 100
+    },
+    {
+      "id": 90,
+      "l4_classification": "Predicate Use Detection (P-Use)",
+      "l5_metric": "Logic Influence Assessment",
+      "field": "p_use",
+      "expected_score": 100
+    },
+    {
+      "id": 91,
+      "l4_classification": "Definition-Use Pair Identification",
+      "l5_metric": "Path Correlation Mapping",
+      "field": "def_use_pairs",
+      "expected_score": 100
+    },
+    {
+      "id": 92,
+      "l4_classification": "All-Uses Coverage Verification",
+      "l5_metric": "Comprehensive Data Proofing",
+      "field": "all_uses_coverage",
+      "expected_score": 100
+    },
+    {
+      "id": 93,
+      "l4_classification": "Partial Uses Coverage Detection",
+      "l5_metric": "Data Flow Gap Analysis",
+      "field": "partial_uses",
+      "expected_score": 100
+    },
+    {
+      "id": 94,
+      "l4_classification": "Multiple Definitions Handling",
+      "l5_metric": "Ambiguity Resolution",
+      "field": "multiple_definitions",
+      "expected_score": 100
+    },
+    {
+      "id": 95,
+      "l4_classification": "Cross-Function Use Detection",
+      "l5_metric": "Inter-procedural Tracking",
+      "field": "cross_function_uses",
+      "expected_score": 100
+    },
+    {
+      "id": 96,
+      "l4_classification": "Unreachable Use Detection",
+      "l5_metric": "Ghost Use Identification",
+      "field": "unreachable_uses",
+      "expected_score": 100
+    },
+    {
+      "id": 97,
+      "l4_classification": "Coverage Reporting Validation",
+      "l5_metric": "Data Integrity Audit",
+      "field": "coverage_valid",
+      "expected_score": 100
+    },
+    {
+      "id": 98,
+      "l4_classification": "Variable Use Detection",
+      "l5_metric": "All-Uses Coverage %",
+      "field": "all_uses_coverage_percent",
+      "expected_score": 100
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "platform": "Testable",
+  "tool": "coverage.py + beniget",
+  "trigger_command": "python all_uses_coverage_trigger.py",
+  "do_not_run_raw_coverage_alone": true,
+  "primary_output_file": "all_uses_coverage.json",
+  "required_root_fields": [
+    "status",
+    "c_use",
+    "p_use",
+    "def_use_pairs",
+    "all_uses_coverage",
+    "partial_uses",
+    "multiple_definitions",
+    "cross_function_uses",
+    "unreachable_uses",
+    "coverage_valid",
+    "all_uses_coverage_percent",
+    "metrics"
+  ],
+  "expected_scores": {
+    "Computational Use Detection (C-Use)": 100,
+    "Predicate Use Detection (P-Use)": 100,
+    "Definition-Use Pair Identification": 100,
+    "All-Uses Coverage Verification": 100,
+    "Partial Uses Coverage Detection": 100,
+    "Multiple Definitions Handling": 100,
+    "Cross-Function Use Detection": 100,
+    "Unreachable Use Detection": 100,
+    "Coverage Reporting Validation": 100,
+    "Variable Use Detection": 100
+  }
+}

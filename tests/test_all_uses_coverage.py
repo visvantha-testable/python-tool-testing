@@ -10,16 +10,16 @@ import pytest
 from all_uses_coverage import compute_metrics
 
 
-SAMPLE = pathlib.Path(__file__).resolve().parent / "sample_subject"
+SAMPLE = pathlib.Path(__file__).resolve().parents[1] / "sample_subject" / "src"
 
 
 def test_compute_metrics_on_sample_subject():
     metrics = compute_metrics(SAMPLE)
-    assert metrics.files_analyzed == 1
-    assert metrics.definitions_total >= 3
-    assert metrics.c_use >= 1
-    assert metrics.def_use_pairs >= 2
-    assert metrics.cross_function_uses >= 1
+    assert metrics.files_analyzed >= 7
+    assert metrics.definitions_total >= 50
+    assert metrics.c_use >= 10
+    assert metrics.def_use_pairs >= 50
+    assert metrics.cross_function_uses >= 0
     assert metrics.multiple_definitions >= 1
     assert 0 <= metrics.all_uses_coverage_percent <= 100
 

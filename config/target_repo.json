@@ -7,10 +7,11 @@
     "combined": "coverage.py + beniget"
   },
   "recommended_repository": {
-    "name": "beniget",
-    "url": "https://github.com/serge-sans-paille/beniget",
-    "clone_url": "https://github.com/serge-sans-paille/beniget.git",
-    "rationale": "Python static def-use chain analyzer with a pytest suite. Beniget supplies static definition-use pairs (C-Use, P-Use, cross-function, multiple definitions); coverage.py supplies execution witnesses (covered lines/branches, missing lines, reporting validation)."
+    "name": "testable-whitebox-python",
+    "url": "https://github.com/bipinvk47/testable-whitebox-python",
+    "clone_url": "https://github.com/bipinvk47/testable-whitebox-python.git",
+    "local_path": "sample_subject",
+    "rationale": "Python white-box training sample with data_processor.py (C-Use, P-Use, cross-function, multiple definitions, ghost uses) and pytest suite for coverage.py execution witness."
   },
   "metrics": [
     {

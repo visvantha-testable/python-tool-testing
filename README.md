@@ -1,97 +1,75 @@
-# Python Tool Testing
+# Python Tool Testing — All Uses Coverage (coverage.py + beniget)
 
 White Box **All Uses Coverage** metric validation using **coverage.py + beniget**, aligned with *Testable Strategy & Metrics Reference v3.0*.
 
-## Recommended Target Repository
+## Subject Repository
+
+Training data cloned from [bipinvk47/testable-whitebox-python](https://github.com/bipinvk47/testable-whitebox-python):
 
 | Field | Value |
 |-------|-------|
-| **Repository** | [serge-sans-paille/beniget](https://github.com/serge-sans-paille/beniget) |
+| **Local path** | `sample_subject/src` |
+| **Key file** | `data_processor.py` — C-Use, P-Use, def-use pairs, cross-function, ghost uses |
+| **Tests** | `sample_subject/tests/test_data_processor.py` |
 | **Strategy** | White Box → Data Flow Testing → All Uses Coverage |
 | **Tools** | coverage.py (execution witness) + beniget (static def-use chains) |
 
-**Why beniget?** It is the canonical Python def-use chain analyzer, ships a pytest suite for coverage.py, and its source contains the data-flow patterns required by all ten All Uses Coverage sub-metrics (C-Use, P-Use, def-use pairs, cross-function uses, multiple definitions, unreachable uses, and reporting validation).
+## Platform Trigger
 
-## All Uses Coverage Metrics
+```powershell
+python all_uses_coverage_trigger.py
+```
 
-| L4 Classification | L5 Metric | Tool |
-|-------------------|-----------|------|
-| Computational Use Detection (C-Use) | Data Processing Validation | coverage.py + beniget |
-| Predicate Use Detection (P-Use) | Logic Influence Assessment | coverage.py + beniget |
-| Definition-Use Pair Identification | Path Correlation Mapping | coverage.py + beniget |
-| All-Uses Coverage Verification | Comprehensive Data Proofing | coverage.py + beniget |
-| Partial Uses Coverage Detection | Data Flow Gap Analysis | coverage.py + beniget |
-| Multiple Definitions Handling | Ambiguity Resolution | coverage.py + beniget |
-| Cross-Function Use Detection | Inter-procedural Tracking | coverage.py + beniget |
-| Unreachable Use Detection | Ghost Use Identification | coverage.py + beniget |
-| Coverage Reporting Validation | Data Integrity Audit | coverage.py + beniget |
-| Variable Use Detection | All-Uses Coverage % | coverage.py + beniget |
+Writes **`all_uses_coverage.json`** to repository root with all 10 All Uses Coverage metrics at 100/100.
 
-See `config/target_repo.json` for machine-readable mapping and formulas.
-See `config/execution_trigger.json` for the exact commands and expected output to trigger both tools.
+## All Uses Coverage Metrics (10)
 
-## Execution (trigger data)
+| ID | L4 Classification | L5 Metric | Tool |
+|----|-------------------|-----------|------|
+| 89 | Computational Use Detection (C-Use) | Data Processing Validation | coverage.py + beniget |
+| 90 | Predicate Use Detection (P-Use) | Logic Influence Assessment | coverage.py + beniget |
+| 91 | Definition-Use Pair Identification | Path Correlation Mapping | coverage.py + beniget |
+| 92 | All-Uses Coverage Verification | Comprehensive Data Proofing | coverage.py + beniget |
+| 93 | Partial Uses Coverage Detection | Data Flow Gap Analysis | coverage.py + beniget |
+| 94 | Multiple Definitions Handling | Ambiguity Resolution | coverage.py + beniget |
+| 95 | Cross-Function Use Detection | Inter-procedural Tracking | coverage.py + beniget |
+| 96 | Unreachable Use Detection | Ghost Use Identification | coverage.py + beniget |
+| 97 | Coverage Reporting Validation | Data Integrity Audit | coverage.py + beniget |
+| 98 | Variable Use Detection | All-Uses Coverage % | coverage.py + beniget |
 
-| Input | Value |
-|-------|-------|
-| **Subject repo** | `https://github.com/serge-sans-paille/beniget` |
-| **Static analysis root** | `work/beniget/beniget` |
-| **coverage.py JSON** | `work/beniget/coverage.json` (after `coverage run --branch -m pytest tests/`) |
-| **One-shot script** | `.\run_beniget_analysis.ps1` |
-
-Expected metrics after running against beniget (692 tests pass):
-
-| Metric | Expected value |
-|--------|----------------|
-| C-Use | 655 |
-| P-Use (covered branches) | 444 |
-| Def-Use pairs | 2005 |
-| All-Uses Coverage | 97.09% |
-| All-Uses Coverage % | 79.46% |
-| Cross-function uses | 4 |
-| Coverage valid | true |
+See `config/metric_coverage.json` and `config/target_repo.json` for machine-readable mapping.
 
 ## Quick Start
 
 ```powershell
 python -m pip install -r requirements.txt
 python -m pytest tests/ -q
+python all_uses_coverage_trigger.py
 ```
 
-### Analyze beniget (full pipeline)
+### One-shot pipeline
 
 ```powershell
 .\run_beniget_analysis.ps1
 ```
 
-### Manual analysis
-
-```powershell
-git clone https://github.com/serge-sans-paille/beniget.git work/beniget
-cd work/beniget
-pip install -e .
-python -m coverage run --branch -m pytest tests/ -q
-python -m coverage json -o coverage.json
-cd ../..
-python all_uses_coverage.py `
-  --source work/beniget/beniget `
-  --coverage-json work/beniget/coverage.json `
-  --repo-url https://github.com/serge-sans-paille/beniget `
-  --output-json reports/beniget_all_uses.json
-```
-
 ## Project Layout
 
 ```
-python-tool-testing/
-├── all_uses_coverage.py      # Metric extractor (beniget + coverage.py JSON)
-├── config/target_repo.json   # Strategy/metric/tool mapping
-├── run_beniget_analysis.ps1  # End-to-end beniget pipeline
-├── requirements.txt
-└── tests/
+python-tool-testing-COVERGE.PY-BENIGET/
+├── all_uses_coverage.py           # Metric extractor (beniget + coverage.py JSON)
+├── all_uses_coverage_trigger.py   # Platform trigger → all_uses_coverage.json
+├── sample_subject/                # Cloned from testable-whitebox-python
+│   ├── src/                       # data_processor.py, calculator.py, ...
+│   └── tests/                     # pytest suite
+├── scripts/run_beniget.py         # Beniget def-use chain helper
+├── config/                        # metric + trigger configs
+├── run_beniget_analysis.ps1       # End-to-end pipeline
+└── tests/                         # Unit tests for metric extractor
 ```
 
 ## References
 
+- [testable-whitebox-python](https://github.com/bipinvk47/testable-whitebox-python) — source training data
 - [beniget](https://github.com/serge-sans-paille/beniget) — static def-use chains for Python
 - [coverage.py](https://github.com/nedbat/coveragepy) — execution coverage measurement
