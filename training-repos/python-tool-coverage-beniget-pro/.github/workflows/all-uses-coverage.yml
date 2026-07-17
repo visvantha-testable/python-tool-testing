@@ -1,0 +1,32 @@
+name: All Uses Coverage CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Unit tests
+        run: python -m pytest tests/ -q
+
+      - name: Platform trigger (10 metrics)
+        run: python all_uses_coverage_trigger.py
+
+      - name: Upload all_uses_coverage.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: all_uses_coverage
+          path: all_uses_coverage.json

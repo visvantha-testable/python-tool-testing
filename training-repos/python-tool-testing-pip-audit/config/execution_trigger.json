@@ -1,0 +1,62 @@
+{
+  "metric": "Dependency Risk (SCA)",
+  "strategy": "Security White-box Testing",
+  "tool": "pip-audit",
+  "target_repository": {
+    "name": "sample_subject",
+    "url": "https://github.com/visvantha-testable/python-tool-testing-pip-audit/tree/master/sample_subject",
+    "requirements_path": "sample_subject/requirements.txt",
+    "why": "Bundled clean Python dependencies for 100/100 pip-audit certification"
+  },
+  "trigger_command": "python -m pip_audit_platform -r sample_subject/requirements.txt -f json -o pip_audit.json",
+  "trigger_command_alt": "python pip_audit_trigger.py",
+  "do_not_use": "python -m pip_audit -f json",
+  "trigger_sequence": [
+    {
+      "step": 1,
+      "tool": "pip_audit_trigger.py",
+      "command": "python pip_audit_trigger.py",
+      "purpose": "ONE-SHOT: isolated venv + collect 5 artifacts + derive 8 metrics + export pip_audit.json"
+    },
+    {
+      "step": 2,
+      "tool": "verify_pip_audit_json.py",
+      "command": "python scripts/verify_pip_audit_json.py --pip-audit-json pip_audit.json",
+      "purpose": "Verify all 8 metrics covered=yes and 100/100"
+    }
+  ],
+  "primary_platform_output": "pip_audit.json",
+  "one_shot_script": "python pip_audit_trigger.py",
+  "one_shot_scripts": [
+    "python pip_audit_trigger.py",
+    ".\\run_trigger.ps1",
+    "./run_trigger.sh",
+    ".\\run_pip_audit_analysis.ps1"
+  ],
+  "required_output_fields": [
+    "output_complete",
+    "metric_coverage_complete",
+    "metrics_covered",
+    "supplemental_raw_data",
+    "metrics",
+    "platform_scores"
+  ],
+  "expected_sample_output": {
+    "total_dependencies": 37,
+    "direct_dependencies": 3,
+    "transitive_dependencies": 34,
+    "total_vulnerabilities": 0,
+    "known_cve_count": 0,
+    "outdated_dependencies": 0,
+    "metrics_covered": 8,
+    "metric_coverage_complete": true,
+    "Transitive Dependency Analysis": 100,
+    "License Compliance Testing": 100,
+    "Supply Chain Security Analysis": 100,
+    "Dependency Health Monitoring": 100,
+    "Risk Prioritization": 100,
+    "Continuous Dependency Monitoring": 100,
+    "Vulnerability Dependency Detection": 100,
+    "Outdated Dependency Detection": 100
+  }
+}

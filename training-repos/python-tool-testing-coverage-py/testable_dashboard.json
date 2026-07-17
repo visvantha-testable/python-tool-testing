@@ -1,0 +1,145 @@
+{
+  "tool": "coverage.py",
+  "target_repository": "sample_subject",
+  "execution_status": "Completed",
+  "metrics": [
+    {
+      "classification": "Decision Coverage",
+      "value": "20/100",
+      "result": "FAIL",
+      "coverage_percent": 19.83
+    },
+    {
+      "classification": "Unit Testing Support",
+      "value": "40/100",
+      "result": "FAIL",
+      "coverage_percent": 39.7
+    },
+    {
+      "classification": "Dead Code Detection",
+      "value": "0/100",
+      "result": "FAIL",
+      "coverage_percent": 0.0
+    },
+    {
+      "classification": "Test Completeness Evaluation",
+      "value": "46/100",
+      "result": "FAIL",
+      "coverage_percent": 46.38
+    },
+    {
+      "classification": "Basic Logic Validation",
+      "value": "40/100",
+      "result": "FAIL",
+      "coverage_percent": 39.7
+    },
+    {
+      "classification": "Code Execution Verification",
+      "value": "40/100",
+      "result": "FAIL",
+      "coverage_percent": 39.7
+    },
+    {
+      "classification": "Conditional Logic Testing",
+      "value": "20/100",
+      "result": "FAIL",
+      "coverage_percent": 19.83
+    },
+    {
+      "classification": "Control Flow Validation",
+      "value": "20/100",
+      "result": "FAIL",
+      "coverage_percent": 19.83
+    },
+    {
+      "classification": "Loop Condition Testing",
+      "value": "20/100",
+      "result": "FAIL",
+      "coverage_percent": 19.83
+    },
+    {
+      "classification": "Edge Case Detection",
+      "value": "60/100",
+      "result": "FAIL",
+      "coverage_percent": 59.91
+    },
+    {
+      "classification": "Logic Error Detection",
+      "value": "0/100",
+      "result": "FAIL",
+      "coverage_percent": 0.0
+    },
+    {
+      "classification": "Test Case Completeness",
+      "value": "20/100",
+      "result": "FAIL",
+      "coverage_percent": 19.83
+    },
+    {
+      "classification": "Decision Outcome Verification",
+      "value": "20/100",
+      "result": "FAIL",
+      "coverage_percent": 19.83
+    },
+    {
+      "classification": "Path Execution Tracking",
+      "value": "40/100",
+      "result": "FAIL",
+      "coverage_percent": 39.7
+    },
+    {
+      "classification": "Complete Coverage Path Verification",
+      "value": "8/100",
+      "result": "FAIL",
+      "coverage_percent": 7.87
+    },
+    {
+      "classification": "Partial Path Coverage Detection",
+      "value": "40/100",
+      "result": "FAIL",
+      "coverage_percent": 39.7
+    },
+    {
+      "classification": "Nested Condition Path Testing",
+      "value": "20/100",
+      "result": "FAIL",
+      "coverage_percent": 19.83
+    },
+    {
+      "classification": "Loop Path Detection",
+      "value": "20/100",
+      "result": "FAIL",
+      "coverage_percent": 19.83
+    },
+    {
+      "classification": "Unreachable Path Detection",
+      "value": "85/100",
+      "result": "PASS",
+      "coverage_percent": 84.92
+    },
+    {
+      "classification": "Exception Path Handling",
+      "value": "20/100",
+      "result": "FAIL",
+      "coverage_percent": 19.83
+    },
+    {
+      "classification": "Multi-Function Path Tracking",
+      "value": "46/100",
+      "result": "FAIL",
+      "coverage_percent": 46.38
+    },
+    {
+      "classification": "CI/CD Integration Test",
+      "value": "30/100",
+      "result": "FAIL",
+      "coverage_percent": 29.76
+    },
+    {
+      "classification": "Path Detection Testing",
+      "value": "30/100",
+      "result": "FAIL",
+      "coverage_percent": 29.76
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "platform": "Testable",
+  "tool": "Git",
+  "language": "Java",
+  "trigger_command": "mvn -q -pl git-platform exec:java -Dexec.mainClass=com.testable.training.platform.GitTrigger",
+  "trigger_command_alt": "./run_trigger.sh",
+  "do_not_run_git_alone": true,
+  "primary_output_file": "git.json",
+  "target_repository": "sample_subject",
+  "required_root_fields": [
+    "summary",
+    "platform_metrics",
+    "platform_scores",
+    "metrics",
+    "supplemental_raw_data",
+    "metric_coverage_complete"
+  ],
+  "totals_required_fields": [
+    "lines_added",
+    "lines_deleted",
+    "total_churn_lines",
+    "churn_rate_per_day",
+    "modules_with_churn",
+    "modules_tested",
+    "code_churn_score",
+    "metrics_total",
+    "metrics_covered",
+    "metric_coverage_complete"
+  ],
+  "expected_metrics_total": 1,
+  "expected_metrics_covered": 1,
+  "expected_score": 100
+}

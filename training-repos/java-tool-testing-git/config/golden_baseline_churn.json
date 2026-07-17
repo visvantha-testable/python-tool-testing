@@ -1,0 +1,16 @@
+{
+  "max_churn_rate_per_day": 500,
+  "rolling_window_days": 30,
+  "modules_with_churn": 3,
+  "modules_tested": 3,
+  "files": [
+    "OrderService.java",
+    "PaymentValidator.java",
+    "RiskPrioritizer.java"
+  ],
+  "regression_mapping": {
+    "OrderService.java": "OrderServiceTest.java",
+    "PaymentValidator.java": "PaymentValidatorTest.java",
+    "RiskPrioritizer.java": "RiskPrioritizerTest.java"
+  }
+}

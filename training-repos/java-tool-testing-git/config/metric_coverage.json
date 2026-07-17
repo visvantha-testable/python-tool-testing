@@ -1,0 +1,39 @@
+{
+  "tool": "Git",
+  "strategy": "Metric and Classification Testing",
+  "category": "Development Process Analysis",
+  "metrics_total": 1,
+  "target_repository": "sample_subject",
+  "source_root": "sample_subject/src/main/java",
+  "test_root": "sample_subject/src/test/java",
+  "metrics": [
+    {
+      "l3_strategy": "Development Process Analysis",
+      "l4_classification": "Code Churn",
+      "l5_metric": "Risk-Based Testing Prioritization",
+      "normalized_score_key": "Risk-Based Testing Prioritization",
+      "score_field": "code_churn_score",
+      "git_native": true,
+      "required_artifacts": [
+        "artifacts/training/git_log_numstat.txt",
+        "artifacts/training/git_churn.json",
+        "artifacts/training/regression_mapping.json"
+      ],
+      "raw_parameters": [
+        "lines_added",
+        "lines_deleted",
+        "total_churn_lines",
+        "churn_rate_per_day",
+        "max_churn_rate_per_day",
+        "rolling_window_days",
+        "modules_with_churn",
+        "modules_tested",
+        "risk_prioritization_score",
+        "stability_score",
+        "code_churn_score"
+      ],
+      "formula": "Rate of code change (lines added + deleted) over rolling window; risk mitigated when all churned modules have regression tests",
+      "expected_score": 100
+    }
+  ]
+}

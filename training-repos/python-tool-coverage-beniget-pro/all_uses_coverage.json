@@ -1,0 +1,108 @@
+{
+  "status": "READY",
+  "tool": "coverage.py + beniget",
+  "strategy": "White Box \u2192 Data Flow Testing \u2192 All Uses Coverage",
+  "source_repository": "https://github.com/bipinvk47/testable-whitebox-python",
+  "subject_path": "sample_subject/src",
+  "coverage_json": "reports\\coverage.json",
+  "metrics_total": 10,
+  "c_use": 230,
+  "p_use": 196,
+  "def_use_pairs": 505,
+  "all_uses_coverage": 0.8733459357277883,
+  "partial_uses": 148,
+  "multiple_definitions": 112,
+  "cross_function_uses": 2,
+  "unreachable_uses": 67,
+  "coverage_valid": true,
+  "all_uses_coverage_percent": 77.43732590529248,
+  "num_statements": 529,
+  "covered_lines": 462,
+  "missing_lines": 67,
+  "num_branches": 216,
+  "covered_branches": 196,
+  "files_analyzed": 10,
+  "definitions_total": 359,
+  "metrics": [
+    {
+      "l4_classification": "Computational Use Detection (C-Use)",
+      "l5_metric": "Data Processing Validation",
+      "field": "c_use",
+      "value": 230,
+      "score": 100,
+      "covered": "yes"
+    },
+    {
+      "l4_classification": "Predicate Use Detection (P-Use)",
+      "l5_metric": "Logic Influence Assessment",
+      "field": "p_use",
+      "value": 196,
+      "score": 100,
+      "covered": "yes"
+    },
+    {
+      "l4_classification": "Definition-Use Pair Identification",
+      "l5_metric": "Path Correlation Mapping",
+      "field": "def_use_pairs",
+      "value": 505,
+      "score": 100,
+      "covered": "yes"
+    },
+    {
+      "l4_classification": "All-Uses Coverage Verification",
+      "l5_metric": "Comprehensive Data Proofing",
+      "field": "all_uses_coverage",
+      "value": 0.8733459357277883,
+      "score": 100,
+      "covered": "yes"
+    },
+    {
+      "l4_classification": "Partial Uses Coverage Detection",
+      "l5_metric": "Data Flow Gap Analysis",
+      "field": "partial_uses",
+      "value": 148,
+      "score": 100,
+      "covered": "yes"
+    },
+    {
+      "l4_classification": "Multiple Definitions Handling",
+      "l5_metric": "Ambiguity Resolution",
+      "field": "multiple_definitions",
+      "value": 112,
+      "score": 100,
+      "covered": "yes"
+    },
+    {
+      "l4_classification": "Cross-Function Use Detection",
+      "l5_metric": "Inter-procedural Tracking",
+      "field": "cross_function_uses",
+      "value": 2,
+      "score": 100,
+      "covered": "yes"
+    },
+    {
+      "l4_classification": "Unreachable Use Detection",
+      "l5_metric": "Ghost Use Identification",
+      "field": "unreachable_uses",
+      "value": 67,
+      "score": 100,
+      "covered": "yes"
+    },
+    {
+      "l4_classification": "Coverage Reporting Validation",
+      "l5_metric": "Data Integrity Audit",
+      "field": "coverage_valid",
+      "value": true,
+      "score": 100,
+      "covered": "yes"
+    },
+    {
+      "l4_classification": "Variable Use Detection",
+      "l5_metric": "All-Uses Coverage %",
+      "field": "all_uses_coverage_percent",
+      "value": 77.43732590529248,
+      "score": 100,
+      "covered": "yes"
+    }
+  ]
+}

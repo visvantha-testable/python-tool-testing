@@ -1,0 +1,66 @@
+{
+  "metric": "All Uses Coverage",
+  "strategy": "White Box → Data Flow Testing",
+  "tools": ["coverage.py", "beniget"],
+  "target_repository": {
+    "name": "testable-whitebox-python",
+    "url": "https://github.com/bipinvk47/testable-whitebox-python",
+    "source_path": "sample_subject/src",
+    "why": "data_processor.py and calculator.py exercise C-Use, P-Use, def-use pairs, cross-function uses, multiple definitions, and ghost uses; pytest suite drives coverage.py execution witness"
+  },
+  "trigger_sequence": [
+    {
+      "step": 1,
+      "tool": "pip",
+      "command": "python -m pip install -r requirements.txt",
+      "purpose": "Install coverage.py, beniget, gast, pytest"
+    },
+    {
+      "step": 2,
+      "tool": "coverage.py",
+      "command": "cd sample_subject && python -m coverage run --branch -m pytest -q",
+      "purpose": "Execution witness: covered lines, branches, missing lines"
+    },
+    {
+      "step": 3,
+      "tool": "coverage.py",
+      "command": "python -m coverage json -o reports/coverage.json --rcfile sample_subject/.coveragerc",
+      "purpose": "Emit coverage JSON for metric formulas"
+    },
+    {
+      "step": 4,
+      "tool": "beniget",
+      "command": "python scripts/run_beniget.py",
+      "purpose": "Static def-use chain analysis per file"
+    },
+    {
+      "step": 5,
+      "tool": "beniget + coverage.py",
+      "command": "python all_uses_coverage_trigger.py",
+      "purpose": "Compute all 10 All Uses Coverage sub-metrics and write all_uses_coverage.json"
+    }
+  ],
+  "one_shot_script": ".\\run_beniget_analysis.ps1",
+  "platform_trigger": "python all_uses_coverage_trigger.py",
+  "primary_output_file": "all_uses_coverage.json",
+  "expected_output_fields": [
+    "c_use",
+    "p_use",
+    "def_use_pairs",
+    "all_uses_coverage",
+    "partial_uses",
+    "multiple_definitions",
+    "cross_function_uses",
+    "unreachable_uses",
+    "coverage_valid",
+    "all_uses_coverage_percent"
+  ],
+  "thresholds_from_mapping": {
+    "c_use_coverage_percent": ">= 65%",
+    "p_use_coverage_percent": ">= 65%",
+    "du_pair_map_coverage_percent": ">= 90%",
+    "all_uses_coverage_percent": ">= 65%",
+    "ghost_use_percent": "< 2%",
+    "report_completeness_percent": ">= 90%"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "strategy": "All Uses Coverage",
+  "l3_technique": "Data Flow Testing",
+  "tools": {
+    "primary": "coverage.py",
+    "secondary": "beniget",
+    "combined": "coverage.py + beniget"
+  },
+  "recommended_repository": {
+    "name": "testable-whitebox-python",
+    "url": "https://github.com/bipinvk47/testable-whitebox-python",
+    "clone_url": "https://github.com/bipinvk47/testable-whitebox-python.git",
+    "local_path": "sample_subject",
+    "rationale": "Python white-box training sample with data_processor.py (C-Use, P-Use, cross-function, multiple definitions, ghost uses) and pytest suite for coverage.py execution witness."
+  },
+  "metrics": [
+    {
+      "l4_classification": "Computational Use Detection (C-Use)",
+      "l5_metric": "Data Processing Validation",
+      "formula": "c_use = len([d for d in definitions if d.user_count > 0 and d.has_c_use])"
+    },
+    {
+      "l4_classification": "Predicate Use Detection (P-Use)",
+      "l5_metric": "Logic Influence Assessment",
+      "formula": "p_use = covered_branches"
+    },
+    {
+      "l4_classification": "Definition-Use Pair Identification",
+      "l5_metric": "Path Correlation Mapping",
+      "formula": "def_use_pairs = sum(d.user_count for d in definitions)"
+    },
+    {
+      "l4_classification": "All-Uses Coverage Verification",
+      "l5_metric": "Comprehensive Data Proofing",
+      "formula": "all_uses_coverage = covered_lines / num_statements"
+    },
+    {
+      "l4_classification": "Partial Uses Coverage Detection",
+      "l5_metric": "Data Flow Gap Analysis",
+      "formula": "partial_uses = len([d for d in definitions if d.user_count == 0]) + len(missing_lines)"
+    },
+    {
+      "l4_classification": "Multiple Definitions Handling",
+      "l5_metric": "Ambiguity Resolution",
+      "formula": "multiple_definitions = len([d for d in definitions if d.user_count > 1])"
+    },
+    {
+      "l4_classification": "Cross-Function Use Detection",
+      "l5_metric": "Inter-procedural Tracking",
+      "formula": "cross_function_uses = len([d for d in definitions if d.crosses_functions])"
+    },
+    {
+      "l4_classification": "Unreachable Use Detection",
+      "l5_metric": "Ghost Use Identification",
+      "formula": "unreachable_uses = len(missing_lines)"
+    },
+    {
+      "l4_classification": "Coverage Reporting Validation",
+      "l5_metric": "Data Integrity Audit",
+      "formula": "coverage_valid = (covered_lines + len(missing_lines)) == num_statements"
+    },
+    {
+      "l4_classification": "Variable Use Detection",
+      "l5_metric": "All-Uses Coverage %",
+      "formula": "all_uses_coverage_percent = (len([d for d in definitions if d.user_count > 0]) / len(definitions)) * 100"
+    }
+  ]
+}
